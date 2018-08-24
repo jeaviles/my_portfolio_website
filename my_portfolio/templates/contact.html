@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col col-lg-6 col-sm-12">
+      <div class="jumbotron jumbo-bg">
+        <h1><u>Contact Form:</u></h1>
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|bootstrap }}
+          <input type="submit" value="Send Message!" class ="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
