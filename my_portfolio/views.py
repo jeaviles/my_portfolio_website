@@ -16,6 +16,7 @@ def contact_view(request):
             name = request.POST.get("name")
             email = request.POST.get("email")
             message = request.POST.get("message")
+            user_subject = request.POST.get("subject")
 
             subject = 'Contact Form Received'
             from_email = settings.DEFAULT_FROM_EMAIL
@@ -24,13 +25,13 @@ def contact_view(request):
             context = {
                 'user': name,
                 'email': email,
-                'message': message
+                'message': message,
+                'subject': user_subject,
             }
 
             contact_message = get_template('contact_message.txt').render(context)
 
             send_mail(subject,contact_message,from_email,to_email,fail_silently=True)
-            print(context)
             return redirect('thanks')
 
     return render(request,'contact.html',{'form':form})

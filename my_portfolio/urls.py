@@ -26,5 +26,5 @@ urlpatterns = [
     path('',HomePageView.as_view(),name='home'),
     path('contact/',contact_view,name='contact'),
     path('contact/thankyou/',ThankYouPageView.as_view(),name='thanks'),
-    path('projects/',include('projects.urls')),
+    path('projects/',include('projects.urls',namespace="projects")),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

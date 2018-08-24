@@ -1,11 +1,10 @@
-You have received a message from your contact form, from:
+You have received a message from your contact form,
 
-{{ user }}
+Subject: {{ user_subject }}
 
-This is what they said:
+From: {{ user }}
 
+Email: {{ email }}
+
+Message:
 {{ message }}
-
-Reply to this email:
-
-{{ email }}

@@ -5,7 +5,7 @@
 <div class="row text-center">
 
   <div class="jumbotron col col-lg-6 col-sm-12 jumbo-bg">
-    <img src="{% static 'FRN_1432.jpg' %}" height=300 width=200>
+    <img src="{% static 'FRN_1432.jpg' %}" height=300 width=200 class='img-fluid'>
     <p class="lead">Joseph Aviles</p>
     <hr class="my-4">
     <p>I like to code.</p>
@@ -16,8 +16,22 @@
     <div class="jumbotron jumbo-bg">
       <h1>Recent Projects:</h1>
       <hr class="my-4">
-
-      <hr class="my-4">
+        {% for project in project_list %}
+        <div
+        {% if project.pk != 1 %}
+          onclick="window.location='{% url 'projects:detail' pk=project.pk%}';"
+        {% else %}
+          onclick="window.location='{% url 'home' %}';"
+        {% endif %}
+        style="cursor: pointer;">
+          <h4>
+              {{project.title}}</h4>
+          <h5>{{project.pub_date}}</h5>
+          <img src="{{project.image.url}}" height=300 width=300 class='img-fluid'>
+          <p>{{project.summary}}</p>
+          <hr class="my-4">
+        </div>
+        {% endfor %}
     </div>
   </div>
 </div>

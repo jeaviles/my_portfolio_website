@@ -1,4 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
-list!
+<div class="row justify-content-center">
+  <div class="col col-lg-6 col-sm-12">
+      <section class="jumbotron text-center jumbo-bg">
+          <div class="container">
+            <h1 class="jumbotron-heading">Projects</h1>
+          </div>
+        </section>
+  </div>
+
+      <div class="album py-5 bg-dark">
+        <div class="container">
+          <div class="row">
+
+            {% for project in project_list %}
+            <div class="col-lg-4 col-md-6 col-sm-12"
+            {% if project.pk != 1 %}
+              onclick="window.location='{% url 'projects:detail' pk=project.pk%}';"
+            {% else %}
+              onclick="window.location='{% url 'home' %}';"
+            {% endif %}
+            style="cursor: pointer;"
+            >
+              <div class="card mb-4 shadow-sm jumbo-bg text-center">
+                <img class="card-img-top img-fluid" src="{{project.image.url}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{project.title}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{project.pub_date}}</h6>
+                  <p class="card-text">{{project.summary}}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+</div>
 {% endblock %}
