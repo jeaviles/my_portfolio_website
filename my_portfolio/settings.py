@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
     'projects.apps.ProjectsConfig',
+    'amort.apps.AmortConfig',
 ]
 
 MIDDLEWARE = [
