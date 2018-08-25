@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import (TemplateView,ListView,DetailView)
+from django.views.generic import ListView
 from .models import Project
 
 class HomePageView(ListView):
@@ -15,7 +15,3 @@ class ProjectListView(ListView):
 
     def get_queryset(self):
         return Project.objects.order_by('-pk')
-
-class ProjectDetailView(DetailView):
-    model = Project
-    template_name = 'projects/projects_detail.html'

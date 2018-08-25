@@ -1,3 +1,57 @@
-<div class="jumbotron">
-  Inside!!!
-</div>
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-12 col-sm-12">
+      <div class="jumbotron jumbo-bg">
+        <h1>Amortization Schedule:</h1>
+        <hr class="my-4">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|bootstrap }}
+          <input type="submit" value="Submit  " class ="btn btn-primary">
+        </form>
+      </div>
+    </div>
+    <div class="col col-lg-12 col-sm-12">
+      <div class="jumbotron jumbo-bg">
+        <h1>Amortization Schedule:</h1>
+        <hr class="my-4">
+        {{html_plot|safe}}
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-borderless table-dark
+                              table-hover table-sm table-striped">
+              <thead>
+                <tr>
+                  {% for key, value in df.items %}
+                    {% if 'Extra' in key %}
+                    {% else %}
+                      <th scope="col">{{key}}</th>
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                    {% for values in table_list %}
+                      <tr>
+                      {% for value in values %}
+                        {% if forloop.first %}
+                          <th scope="row">{{value}}</th>
+                        {% else %}
+                          <td>{{value}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      </tr>
+                    {% endfor %}
+              </tbody>
+            </div>
+    </div>
+{% endblock %}

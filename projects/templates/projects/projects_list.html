@@ -16,7 +16,9 @@
             {% for project in project_list %}
             <div class="col-lg-4 col-md-6 col-sm-12"
             {% if project.pk != 1 %}
-              onclick="window.location='{% url 'projects:detail' pk=project.pk%}';"
+              {% with rel_url="projects:"|add:project.appname|add:":"|add:project.appname %}
+              onclick="window.location='{% url rel_url %}';"
+              {% endwith %}
             {% else %}
               onclick="window.location='{% url 'home' %}';"
             {% endif %}

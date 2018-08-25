@@ -1,11 +1,10 @@
-from django.urls import path
+from django.urls import path,include
 from .views import  (HomePageView,
-                    ProjectListView,
-                    ProjectDetailView)
+                    ProjectListView)
 
 app_name='projects'
 
 urlpatterns = [
     path('',ProjectListView.as_view(),name='projects'),
-    path('detail/<int:pk>/',ProjectDetailView.as_view(),name='detail'),
+    path('amort/',include('amort.urls',namespace='amort')),
 ]
