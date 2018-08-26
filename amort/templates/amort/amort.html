@@ -26,11 +26,8 @@
                               table-hover table-sm table-striped">
               <thead>
                 <tr>
-                  {% for key, value in df.items %}
-                    {% if 'Extra' in key %}
-                    {% else %}
+                  {% for key, value in df %}
                       <th scope="col">{{key}}</th>
-                    {% endif %}
                   {% endfor %}
                 </tr>
               </thead>

@@ -26,11 +26,21 @@ def amort_view(request):
                              rate=rate,
                              loanPeriod=loan_period)
 
+            friendlyDf = [] #Makes data ordered
+            friendlyDf.append(('Pay Date',df['Pay Date']))
+            friendlyDf.append(('Beginning Balance',df['Beginning Balance']))
+            friendlyDf.append(('Payment',df['Payment']))
+            friendlyDf.append(('Principal',df['Principal']))
+            friendlyDf.append(('Interest',df['Interest']))
+            friendlyDf.append(('Cumulative Principal',df['Cumulative Principal']))
+            friendlyDf.append(('Cumulative Interest',df['Cumulative Interest']))
+            friendlyDf.append(('Ending Balance',df['Ending Balance']))
+
             table_list = []
 
             for i in range(len(df['Payment'])):
                 temp_list = []
-                for key,value in df.items():
+                for key,value in friendlyDf:
                     if(i == 0 and 'Cumulative' in key):
                         temp_list.append(0)
                     elif('Cumulative' in key):
@@ -42,7 +52,7 @@ def amort_view(request):
             html_plot = str(plot_html(df))
 
             return render(request,'amort/amort.html',{'form':form,
-                                                        'df':df,
+                                                        'df':friendlyDf,
                                                         'table_list':table_list,
                                                         'html_plot':html_plot})
 
