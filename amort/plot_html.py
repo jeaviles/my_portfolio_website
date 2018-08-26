@@ -17,10 +17,10 @@ def plot_html(data):
     bal = str(data['Beginning Balance'])
     bal = make_trace("bal",pay_date,bal,'Beginning Balance')
 
-    cumpri = str(data['Cumulative Principal']) #str(data['Cumulative Principal'].insert(0,0))
+    cumpri = str(data['Cumulative Principal'])
     cumpri = make_trace("cumpri",pay_date,cumpri,'Cumulative Principal')
 
-    cumint = str(data['Cumulative Interest']) #str(data['Cumulative Interest'].insert(0,0))
+    cumint = str(data['Cumulative Interest'])
     cumint = make_trace("cumint",pay_date,cumint,'Cumulative Interest')
 
     endbal = str(data['Ending Balance'])

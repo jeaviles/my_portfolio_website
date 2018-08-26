@@ -1,44 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row justify-content-center">
-  <div class="col col-lg-6 col-sm-12">
+  <div class="col-12">
       <section class="jumbotron text-center jumbo-bg">
           <div class="container">
             <h1 class="jumbotron-heading">Projects</h1>
-          </div>
-        </section>
-  </div>
+            <hr class="my-4">
 
-      <div class="album py-5 bg-dark">
+
+      <div class="album py-5 jumbo-bg">
         <div class="container">
-          <div class="row">
+          <div class="row justify-content-center">
 
             {% for project in project_list %}
-            <div class="col-lg-4 col-md-6 col-sm-12"
-            {% if project.pk != 1 %}
-              {% with rel_url="projects:"|add:project.appname|add:":"|add:project.appname %}
-              onclick="window.location='{% url rel_url %}';"
-              {% endwith %}
-            {% else %}
-              onclick="window.location='{% url 'home' %}';"
-            {% endif %}
-            style="cursor: pointer;"
-            >
-              <div class="card mb-4 shadow-sm jumbo-bg text-center">
-                <img class="card-img-top img-fluid" src="{{project.image.url}}">
-                <div class="card-body">
-                  <h5 class="card-title">{{project.title}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{{project.pub_date}}</h6>
-                  <p class="card-text">{{project.summary}}</p>
+
+              <div class="card-deck col-lg-6 col-md-6 col-sm-12"
+              {% if project.pk != 1 %}
+                {% with rel_url="projects:"|add:project.appname|add:":"|add:project.appname %}
+                onclick="window.location='{% url rel_url %}';"
+                {% endwith %}
+              {% else %}
+                onclick="window.location='{% url 'home' %}';"
+              {% endif %}
+              style="cursor: pointer;"
+              >
+                <div class="card border-dark rounded" style="border-width:5px !important;">
+                  <img class="card-img-top img-fluid" src="{{project.image.url}}">
+                  <div class="card-body" style='background-color:#BDC3C7 !important;'>
+                    <h5 class="card-title">{{project.title}}</h5>
+                    <hr class="my-4">
+                    <p class="card-text">{{project.summary}}</p>
+                    <p class="card-text"><small class="text-muted">{{project.pub_date}}</small></p>
+                  </div>
                 </div>
               </div>
-            </div>
             {% endfor %}
           </div>
         </div>
       </div>
 
-    </main>
-
+    </div>
+  </section>
+</div>
 </div>
 {% endblock %}

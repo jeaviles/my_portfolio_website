@@ -16,15 +16,10 @@
         </form>
       </div>
     </div>
-    <div class="col col-lg-12 col-sm-12">
-      <div class="jumbotron jumbo-bg">
-        <h1>Amortization Schedule:</h1>
-        <hr class="my-4">
+    <div class="col col-lg-12 container">
         {{html_plot|safe}}
-      </div>
-    </div>
   </div>
-  <div class="row text-center">
+  <div class="row text-center pt-4 container">
     <div class="col-12">
           <div class="table-responsive">
             <table class="table table-borderless table-dark
@@ -46,7 +41,7 @@
                         {% if forloop.first %}
                           <th scope="row">{{value}}</th>
                         {% else %}
-                          <td>{{value}}</td>
+                          <td>{{value|floatformat:2}}</td>
                         {% endif %}
                       {% endfor %}
                       </tr>
